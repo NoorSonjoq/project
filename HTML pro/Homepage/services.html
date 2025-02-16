@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="./services.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   </head>
   <body>
     <nav class="nav">
@@ -45,9 +46,15 @@
         <li><a href="../Homepage/Booking.html"><i class="fas fa-calendar-check"></i> Booking</a></li> 
         <li>
           <a href="../login/login.html"
-            ><i class="fas fa-sign-in-alt"></i> Login</a
-          >
+            ><i class="fas fa-sign-in-alt"></i> Login</a>
         </li>
+        <div class="language-switcher">
+          EN ▼
+          <div class="dropdown">
+              <a href="./Homepage_AR.HTML">العربية</a>
+              <a href="./Homepage.html">English</a>
+          </div>
+      </div>
       </ul>
     </nav>
     <header class="header1">
@@ -94,7 +101,7 @@
     </section>
     
     <footer class="footer">
-      <p>© 2025 DiscoverJordan | All rights reserved.</p>
+      <p data-lang="footer" class="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
     </footer>
     
     <script src="Homepage.js"></script>

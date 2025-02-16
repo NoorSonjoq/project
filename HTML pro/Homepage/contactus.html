@@ -15,77 +15,60 @@
       <h1 class="logo">DiscoverJordan</h1>
       <button class="toggle-btn">&#9776;</button>
       <ul class="menu">
-        <li>
-          <a href="./Homepage.html"><i class="fas fa-home"></i> Home</a>
-        </li>
-        <li>
-          <a href="./aboutus.html"
-            ><i class="fas fa-info-circle"></i> About Us</a
-          >
-        </li>
-        <li>
-          <a href="./services.html"><i class="fas fa-cogs"></i> Services</a>
-        </li>
-        <li>
-          <a href="./destinations.html"
-            ><i class="fas fa-map-marker-alt"></i> Destinations</a
-          >
-        </li>
-        <li>
-          <a href="./reviews.html"><i class="fas fa-star"></i> Reviews</a>
-        </li>
-        <li>
-          <a href="./gallary.html"><i class="fas fa-images"></i> Gallery</a>
-        </li>
-        <li>
-          <a href="./contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-          <li><a href="../Homepage/Booking.html"><i class="fas fa-calendar-check"></i> Booking</a></li> 
-          <a href="../login/login.html"
-            ><i class="fas fa-sign-in-alt"></i> Login</a >
-        </li>
+        <li><a href="./Homepage.html"><i class="fas fa-home"></i> <span class="lang-text" data-lang="home">Home</span></a></li>
+        <li><a href="./aboutus.html"><i class="fas fa-info-circle"></i> <span class="lang-text" data-lang="about">About Us</span></a></li>
+        <li><a href="./services.html"><i class="fas fa-cogs"></i> <span class="lang-text" data-lang="services">Services</span></a></li>
+        <li><a href="./destinations.html"><i class="fas fa-map-marker-alt"></i> <span class="lang-text" data-lang="destinations">Destinations</span></a></li>
+        <li><a href="./reviews.html"><i class="fas fa-star"></i> <span class="lang-text" data-lang="reviews">Reviews</span></a></li>
+        <li><a href="./gallary.html"><i class="fas fa-images"></i> <span class="lang-text" data-lang="gallery">Gallery</span></a></li>
+        <li><a href="./contactus.html"><i class="fas fa-envelope"></i> <span class="lang-text" data-lang="contact">Contact Us</span></a></li>
+        <li><a href="../Homepage/Booking.html"><i class="fas fa-calendar-check"></i> <span class="lang-text" data-lang="booking">Booking</span></a></li>
+        <li><a href="../login/login.html"><i class="fas fa-sign-in-alt"></i> <span class="lang-text" data-lang="login">Login</span></a></li>
       </ul>
+      <div class="language-switcher">
+        <button onclick="switchLanguage('en')">EN</button>
+        <button onclick="switchLanguage('ar')">AR</button>
+      </div>
     </nav>
+
     <header class="header1">
       <div class="intro-content">
-        <h1>Contact Us</h1>
-        <p>
-          We'd love to hear from you! Please reach out with any questions or
-          comments.
+        <h1 class="lang-text" data-lang="contact_title">Contact Us</h1>
+        <p class="lang-text" data-lang="contact_description">
+          We'd love to hear from you! Please reach out with any questions or comments.
         </p>
       </div>
     </header>
+
     <section class="contact-section">
       <div class="form-container">
-        <h2>Get In Touch</h2>
+        <h2 class="lang-text" data-lang="get_in_touch">Get In Touch</h2>
         <form action="#" method="post">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows="5"
-            required
-          ></textarea>
-          <button type="submit">Send Message</button>
+          <input type="text" name="name" class="lang-text" data-lang-placeholder="full_name_placeholder" required />
+          <input type="email" name="email" class="lang-text" data-lang-placeholder="email_placeholder" required />
+          <textarea name="message" class="lang-text" data-lang-placeholder="message_label" rows="5" required></textarea>
+          <button type="submit" class="lang-text" data-lang="submit_button">Send Message</button>
         </form>
       </div>
 
       <div class="contact-info">
         <div class="address">
-          <h3>Our Address</h3>
-          <p>123 DiscoverJordan St, Amman, Jordan</p>
+          <h3 class="lang-text" data-lang="our_address">Our Address</h3>
+          <p class="lang-text" data-lang="address">Amman, Jordan</p> 
         </div>
         <div class="social">
-          <h3>Follow Us</h3>
+          <h3 class="lang-text" data-lang="follow_us">Follow Us</h3>
           <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
           <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </section>
+
     <footer class="footer">
-      <p>© 2025 DiscoverJordan | All rights reserved.</p>
+      <p class="lang-text" data-lang="footer">© 2025 DiscoverJordan | All rights reserved.</p>
     </footer>
+
+    <script src="./language.js"></script>
   </body>
-  <script src="../Homepage/Homepage.js"></script>
 </html>

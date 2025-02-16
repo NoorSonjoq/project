@@ -10,4 +10,4 @@ window.addEventListener("DOMContentLoaded", () => {
   const introText = document.querySelector(".intro h1");
   introText.classList.add("fade-in");
 });
-ئ
+

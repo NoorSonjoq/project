@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap");
+
+html[lang="ar"] {
+  direction: rtl;
+  text-align: right;
+  font-family: "Tajawal", sans-serif;
+}
+html[lang="en"] {
+  direction: ltr;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+}
 
 * {
   margin: 0;
@@ -6,7 +18,50 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+.language-switcher button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}
 
+.language-switcher button:hover {
+  color: #f4a261;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 100px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+.dropdown a:hover {
+  background-color: #ddd;
+}
+.language-switcher:hover .dropdown {
+  display: block;
+}
 .header2 {
   position: relative;
   width: 100%;
@@ -21,6 +76,32 @@
   text-align: center;
 }
 
+.header2 p,.header2 ul {
+  font-size: 18px;
+  color: #dcdcdc;
+  margin-bottom: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  line-height: 1.6;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.header2 h1 {
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+}
+.header2 h1.fade-in {
+  opacity: 1;
+}
+.header2 p {
+  text-align: center;
+}
 .nav {
   position: fixed;
   top: 0;
@@ -32,29 +113,44 @@
   color: whitesmoke;
   z-index: 10;
 }
-ul {
-  list-style-type: none;
-}
 .menu {
   display: flex;
   align-items: center;
 }
+
+.menu a {
+  color: #f7f3f3;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+html[lang="ar"] .menu {
+  flex-direction: row-reverse;
+}
+ul {
+  list-style-type: none;
+}
+
 li {
   margin: 0 15px;
 }
 a {
   text-decoration: none;
 }
-a:hover {
-  text-decoration: underline;
-}
-.menu a {
-  color: #f7f3f3;
-}
 .toggle-btn {
   position: absolute;
   display: none;
   cursor: pointer;
+}
+
+.about-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 50px;
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 850px) {
   .toggle-btn {
@@ -84,45 +180,6 @@ a:hover {
   li {
     padding: 12px 0;
   }
-}
-
-.about-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  padding: 50px;
-  flex-wrap: wrap;
-}
-
-.header2 h1 {
-  font-size: 32px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  text-align: center;
-}
-
-.header2 h1.fade-in {
-  opacity: 1;
-}
-
-.header2 p,.header2 ul {
-  font-size: 18px;
-  color: #dcdcdc;
-  margin-bottom: 20px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  line-height: 1.6;
-  max-width: 900px;
-  width: 100%;
-  padding: 0 20px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.header2 p {
-  text-align: center;
 }
 .footer {
   background-color: rgba(0, 0, 0, 0.8);
