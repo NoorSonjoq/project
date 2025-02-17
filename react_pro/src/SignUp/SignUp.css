@@ -5,7 +5,7 @@ body{
     align-items:center;
     min-height: 100vh;
     background: cadetblue;
-    background-image: url(../img/img.jpg);
+    background-image: url(../../public/img/img.jpg);
     background-size: cover;
     background-position: center;
     box-sizing: border-box;

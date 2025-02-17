@@ -80,19 +80,19 @@ header {
 }
 @keyframes fadeBackground {
   0% {
-    background-image: url("../img/img.jpg");
+    background-image: url("../../../public/img/img.jpg");
   }
   25% {
-    background-image: url("../img/img2.jpg");
+    background-image: url("../../../public/img/img2.jpg");
   }
   50% {
-    background-image: url("../img/img3.jpg");
+    background-image: url("../../../public/img/img3.jpg");
   }
   75% {
-    background-image: url("../img/img4.jpg");
+    background-image: url("../../../public/img/img4.jpg");
   }
   100% {
-    background-image: url("../img/img.jpg");
+    background-image: url("../../../public/img/img.jpg");
   }
 }
 header::before {

@@ -4,7 +4,7 @@ body{
     align-items:center;
     min-height: 100vh;
     background: rgb(248, 248, 248);
-    background-image: url(../img/img4.jpg);
+    background-image: url(../../public/img/img4.jpg);
     background-size: cover;
     background-position: center;
     box-sizing: border-box;
