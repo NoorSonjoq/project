@@ -48,8 +48,25 @@ html[lang="en"] {
 .language-switcher:hover .dropdown {
   display: block;
 }
-head
 
+.language-switcher button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.language-switcher button:hover {
+  color: #f4a261;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
 .header1 {
   width: 100%;
   height: 40vh;

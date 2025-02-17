@@ -58,8 +58,20 @@ const translations = {
       review_3: '"Loved the local hospitality and beautiful landscapes. Will visit again!"',
       leave_review: "Leave a Review",
       submit_review: "Submit",
-
-
+      services_title: "Our Travel Services",
+      services_intro: "Explore the wide range of services we offer for your perfect trip to Jordan.",
+      tourist_tours: "Tourist Tours",
+      tourist_tours_desc: "Discover the main attractions like Petra, Dead Sea, Wadi Rum, and more.",
+      historical_tours: "Historical & Cultural Tours",
+      historical_tours_desc: "Experience the rich history of Jordan with our cultural tours.",
+      accommodation: "Accommodation Services",
+      accommodation_desc: "Find the best hotels or apartments near major attractions.",
+      transportation: "Transportation Services",
+      transportation_desc: "Rent cars or book private transport to travel between attractions.",
+      private_tours: "Private Tours",
+      private_tours_desc: "Custom tours tailored to your interests and preferences.",
+      restaurants: "Restaurants",
+      restaurants_desc: "Discover Jordan's best dining spots, offering traditional and international cuisines.",
 
   },
   ar: {
@@ -106,6 +118,7 @@ const translations = {
       our_address: "عنواننا",
       follow_us: "تابعنا",
       address: "عمان، الأردن",
+      explore1:"Explore the Most Beautiful Destinations in Jordan",
       explore: "اكتشف أجمل الوجهات في الأردن مع خدماتنا السياحية الفريدة! نساعدك في تصميم رحلتك المثالية بكل سهولة.",
       discover: "اكتشف الأماكن المدهشة وخطط لمغامرتك القادمة!",
       topDestinations: "أهم الوجهات",
@@ -121,26 +134,29 @@ const translations = {
       review_3: '"أحببت الضيافة المحلية والمناظر الطبيعية الجميلة. سأزور مرة أخرى!"',
       leave_review: "اترك رايك",
       submit_review: "إرسال",
-
-
+      services_title: "خدماتنا السياحية",
+      services_intro: "اكتشف مجموعة واسعة من الخدمات التي نقدمها لرحلتك المثالية في الأردن.",
+      tourist_tours: "الجولات السياحية",
+      tourist_tours_desc: "اكتشف المعالم الرئيسية مثل البتراء، البحر الميت، وادي رم والمزيد.",
+      historical_tours: "الجولات التاريخية والثقافية",
+      historical_tours_desc: "استمتع بتاريخ الأردن العريق من خلال جولاتنا الثقافية.",
+      accommodation: "خدمات الإقامة",
+      accommodation_desc: "ابحث عن أفضل الفنادق أو الشقق القريبة من المعالم الرئيسية.",
+      transportation: "خدمات النقل",
+      transportation_desc: "استأجر سيارة أو احجز وسيلة نقل خاصة بين المعالم.",
+      private_tours: "الجولات الخاصة",
+      private_tours_desc: "جولات مخصصة وفقًا لاهتماماتك وتفضيلاتك.",
+      restaurants: "المطاعم",
+      restaurants_desc: "اكتشف أفضل أماكن تناول الطعام في الأردن، من الأطباق التقليدية إلى العالمية.",
   }
 };
+
 function switchLanguage(lang) {
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.setAttribute("lang", lang);
   
-  const elements = document.querySelectorAll('.lang-text');
-  elements.forEach(element => {
+  const langTexts = document.querySelectorAll('.lang-text');
+  langTexts.forEach((element) => {
     const key = element.getAttribute('data-lang');
-    if (translations[lang] && translations[lang][key]) {
-      element.textContent = translations[lang][key];
-    }
+    element.textContent = translations[lang][key] || element.textContent;
   });
-
-  localStorage.setItem('language', lang);
 }
-
-window.onload = function() {
-  const savedLang = localStorage.getItem('language') || 'en';  
-  switchLanguage(savedLang);
-};

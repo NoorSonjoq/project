@@ -42,4 +42,27 @@ function login(){
                     toggleIcon.classList.add('fa-eye-slash');
                 }
             }
-         
+
+
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                var idToken = googleUser.getAuthResponse().id_token;
+            
+                fetch('/auth/google', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ idToken: idToken })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        console.log('فشل تسجيل الدخول');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+            

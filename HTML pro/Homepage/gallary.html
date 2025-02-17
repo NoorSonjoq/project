@@ -12,7 +12,7 @@
 <body >
   <nav class="nav"> 
     <h1 class="logo">DiscoverJordan</h1>
-    <button class="toggle-btn">&#9776</button>
+    <button class="toggle-btn">&#9776;</button>
     <ul class="menu">
       <li><a href="./Homepage.html"><i class="fas fa-home"></i> <span class="lang-text" data-lang="home">Home</span></a></li>
       <li><a href="./aboutus.html"><i class="fas fa-info-circle"></i> <span class="lang-text" data-lang="about">About Us</span></a></li>
@@ -24,6 +24,10 @@
       <li><a href="../Homepage/Booking.html"><i class="fas fa-calendar-check"></i> <span class="lang-text" data-lang="booking">Booking</span></a></li> 
       <li><a href="../login/login.html"><i class="fas fa-sign-in-alt"></i> <span class="lang-text" data-lang="login">Login</span></a></li> 
   </ul>
+    <div class="language-switcher">
+      <button onclick="switchLanguage('en')">EN</button>
+      <button onclick="switchLanguage('ar')">AR</button>
+  </div>
 </nav>
     <section id="gallery" class="gallery">
         <div class="container" data-aos="fade-up">
@@ -58,5 +62,5 @@
 <footer class="footer">
   <p>© 2025 DiscoverJordan | All rights reserved.</p>
 </footer>
-<script src="Homepage.js"></script>
+<script src="./language.js"></script>
 </html>
