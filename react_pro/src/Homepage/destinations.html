@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | DiscoverJordan</title>
+    <link rel="stylesheet" href="./destinations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="nav"> 
+        <h1 class="logo">DiscoverJordan</h1>
+        <button class="toggle-btn">&#9776;</button>
+        <ul class="menu">
+          <li><a href="./Homepage.html"><i class="fas fa-home"></i> <span class="lang-text" data-lang="home">Home</span></a></li>
+          <li><a href="./aboutus.html"><i class="fas fa-info-circle"></i> <span class="lang-text" data-lang="about">About Us</span></a></li>
+          <li><a href="./services.html"><i class="fas fa-cogs"></i> <span class="lang-text" data-lang="services">Services</span></a></li>
+          <li><a href="./destinations.html"><i class="fas fa-map-marker-alt"></i> <span class="lang-text" data-lang="destinations">Destinations</span></a></li> 
+          <li><a href="./reviews.html"><i class="fas fa-star"></i> <span class="lang-text" data-lang="reviews">Reviews</span></a></li> 
+          <li><a href="./gallary.html"><i class="fas fa-images"></i> <span class="lang-text" data-lang="gallery">Gallery</span></a></li> 
+          <li><a href="./contactus.html"><i class="fas fa-envelope"></i> <span class="lang-text" data-lang="contact">Contact Us</span></a></li> 
+          <li><a href="../Homepage/Booking.html"><i class="fas fa-calendar-check"></i> <span class="lang-text" data-lang="booking">Booking</span></a></li> 
+          <li><a href="../login/login.html"><i class="fas fa-sign-in-alt"></i> <span class="lang-text" data-lang="login">Login</span></a></li> 
+      </ul>
+        <div class="language-switcher">
+          <button onclick="switchLanguage('en')">EN</button>
+          <button onclick="switchLanguage('ar')">AR</button>
+      </div>
+    </nav>
+
+    <header class="header1">
+        <div class="intro-content">
+            <h1><span class="lang-text" data-lang="explore1">Explore the Most Beautiful Destinations in Jordan</span></h1>
+            <p><span class="lang-text" data-lang="discover">Discover breathtaking places and plan your next adventure!</span></p>
+        </div>
+    </header>
+
+    <section class="destinations">
+        <h2><span class="lang-text" data-lang="topDestinations">Top Destinations</span></h2>
+        <div class="destinations-container">
+            <div class="destination-card">
+                <img src="../img/petra.jpg" alt="Petra">
+                <a href="https://www.google.com/maps?q=Petra,+Jordan">
+                    <h3>Petra</h3>
+                    <p><span class="lang-text" data-lang="petraDescription">The ancient city of Petra, one of the Seven Wonders of the World.</span></p>
+                </a>
+            </div>
+            <div class="destination-card">
+                <img src="../img/Wadi Rum.jpg" alt="Wadi Rum">
+                <a href="https://maps.app.goo.gl/p6CEdyTdbZtNaeqE6">
+                    <h3>Wadi Rum</h3>
+                    <p><span class="lang-text" data-lang="wadiRumDescription">Experience the stunning desert landscape and adventure activities.</span></p>
+                </a>
+            </div>
+            <div class="destination-card">
+                <img src="../img/Dead Sea.jpg" alt="Dead Sea">
+                <a href="https://maps.app.goo.gl/NWBMat5D1ATuhCqaA">
+                    <h3>Dead Sea</h3>
+                    <p><span class="lang-text" data-lang="deadSeaDescription">Float effortlessly in the world's saltiest body of water.</span></p>
+                </a>
+            </div>
+        </div>
+    </section>    
+
+    <footer class="footer">
+        <p data-lang="footer" class="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+    </footer>
+
+    <script src="./language.js"></script>
+</body>
+</html>

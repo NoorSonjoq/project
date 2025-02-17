@@ -36,27 +36,17 @@
     <section class="form-section">
         <div class="form-container">
             <form action="/submit-booking" method="POST">
-                <label  for="name" class="lang-text" data-lang="full_name">Full Name:</label>
-                <input class="inp" type="text" id="name" name="name" data-lang-placeholder="Enter your name" placeholder="Enter your Name" required>
+                <label for="name" class="lang-text" data-lang="full_name">Full Name:</label>
+                <input type="text" id="name" name="name" data-lang-placeholder="Enter your name" required>
     
                 <label for="email" class="lang-text" data-lang="email">Email:</label>
-                <input class="inp" type="email" id="email" name="email" data-lang-placeholder="Enter your email" placeholder="Enter your  Email" required>
+                <input type="email" id="email" name="email" data-lang-placeholder="Enter your email" required>
     
-                <label  for="phone" class="lang-text" data-lang="phone">Phone Number:</label>
-                <input class="inp" type="tel" id="phone" name="phone" data-lang-placeholder="Enter your phone number" placeholder="Enter your  Phone" required>
+                <label for="phone" class="lang-text" data-lang="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" data-lang-placeholder="Enter your phone number" required>
     
-                <label  for="date" class="lang-text" data-lang="booking_date">Booking Date:</label>
-                <input class="inp"type="date" id="date" name="date" required>
-                <fieldset>
-                    <legend class="lang-text" data-lang="services">Select Your Services:</legend>
-                    
-                    <label class="check" data-lang="tourist_tours"><input type="checkbox" name="services[]" value="Tourist Tours"> Tourist Tours</label><br>
-                    <label class="check" data-lang="historical_tours"><input type="checkbox" name="services[]" value="Historical & Cultural Tours"> Historical & Cultural Tours</label><br>
-                    <label class="check" data-lang="accommodation"><input type="checkbox" name="services[]" value="Accommodation Services"> Accommodation Services</label><br>
-                    <label class="check" data-lang="transportation"><input type="checkbox" name="services[]" value="Transportation Services"> Transportation Services</label><br>
-                    <label class="check" data-lang="private_tours"><input type="checkbox" name="services[]" value="Private Tours"> Private Tours</label><br>
-                    <label class="check" data-lang="restaurants"><input type="checkbox" name="services[]" value="Restaurants"> Restaurants</label>
-                </fieldset>
+                <label for="date" class="lang-text" data-lang="booking_date">Booking Date:</label>
+                <input type="date" id="date" name="date" required>
     
                 <button type="submit" class="submit-button lang-text" data-lang="submit_booking">Submit Booking</button>
             </form>

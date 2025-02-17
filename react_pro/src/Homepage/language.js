@@ -72,12 +72,7 @@ const translations = {
       private_tours_desc: "Custom tours tailored to your interests and preferences.",
       restaurants: "Restaurants",
       restaurants_desc: "Discover Jordan's best dining spots, offering traditional and international cuisines.",
-      tourist_tours: "Tourist Tours",
-      historical_tours: "Historical & Cultural Tours",
-      accommodation: "Accommodation Services",
-      transportation: "Transportation Services",
-      private_tours: "Private Tours",
-      restaurants: "Restaurants",
+
   },
   ar: {
       home: "الرئيسية",
@@ -153,12 +148,6 @@ const translations = {
       private_tours_desc: "جولات مخصصة وفقًا لاهتماماتك وتفضيلاتك.",
       restaurants: "المطاعم",
       restaurants_desc: "اكتشف أفضل أماكن تناول الطعام في الأردن، من الأطباق التقليدية إلى العالمية.",
-            tourist_tours: "الجولات السياحية",
-      historical_tours: "الجولات التاريخية والثقافية",
-      accommodation: "خدمات الإقامة",
-      transportation: "خدمات النقل",
-      private_tours: "الجولات الخاصة",
-      restaurants: "المطاعم",
   }
 };
 
@@ -169,11 +158,5 @@ function switchLanguage(lang) {
   langTexts.forEach((element) => {
     const key = element.getAttribute('data-lang');
     element.textContent = translations[lang][key] || element.textContent;
-  });
-
-  const serviceLabels = document.querySelectorAll('label[data-lang]');
-  serviceLabels.forEach((label) => {
-    const serviceKey = label.getAttribute('data-lang');
-    label.textContent = translations[lang][serviceKey] || label.textContent;
   });
 }
