@@ -153,7 +153,7 @@ const translations = {
       private_tours_desc: "جولات مخصصة وفقًا لاهتماماتك وتفضيلاتك.",
       restaurants: "المطاعم",
       restaurants_desc: "اكتشف أفضل أماكن تناول الطعام في الأردن، من الأطباق التقليدية إلى العالمية.",
-            tourist_tours: "الجولات السياحية",
+      tourist_tours: "الجولات السياحية",
       historical_tours: "الجولات التاريخية والثقافية",
       accommodation: "خدمات الإقامة",
       transportation: "خدمات النقل",

@@ -17,7 +17,6 @@ body{
     border-radius: 10px;
     font-size: 20px;
     color:#ffffffa4;
-
 }
 
 .g-signin2 > div {
@@ -26,7 +25,6 @@ body{
     font-size: 30px;
     background: rgba(250, 250, 250, 0.178);
     color:#ffffffa4;
-
 }
 .or-divider {
     text-align: center;
@@ -50,7 +48,7 @@ body{
 
     } 
 form{
-        margin-top:20px;
+        margin: top 10px;
      }
  h1{
     font-size: 36px;
@@ -78,7 +76,7 @@ input::placeholder{
     width:80%;
 }
 #errorpass{
-    color:#ffffffec;
+color:#ffffffec;
 margin: 5px;
 padding: 5px;
 text-align: center;
@@ -104,10 +102,3 @@ font-size: 20px;
         text-align: center;
         color:#ffffffa4;
     }
-.forget{
-    margin-left: 5px;
-    padding: 5px;
-    font-size: 13px;  
-    text-align: center;
-    color:#ffffffa4;
-}

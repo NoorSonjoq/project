@@ -165,6 +165,43 @@ input[type="checkbox"] {
   transform: scale(1.2);
   cursor: pointer;
 }
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.intro-content h1 {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: whitesmoke;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.intro-content p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: whitesmoke;
+  margin-bottom: 20px;
+  font-family: "Courier New", monospace;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 1s forwards;
+}
+
+/* تأثيرات التحريك */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @media screen and (max-width: 850px) {
   .toggle-btn {
     display: block;
@@ -237,11 +274,12 @@ input[type="checkbox"] {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   bottom: 0;
   width: 100%;
 }
+
 .footer p {
   font-size: 14px;
 }
