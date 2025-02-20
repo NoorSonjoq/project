@@ -1,249 +1,129 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap");
 
-html[lang="ar"] {
-  direction: rtl;
-  text-align: right;
-  font-family: "Tajawal", sans-serif;
-}
-html[lang="en"] {
-  direction: ltr;
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
-.language-switcher {
-  position: relative;
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-.dropdown {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 100px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
-}
-.dropdown a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-}
-.dropdown a:hover {
-  background-color: #ddd;
-}
-.language-switcher:hover .dropdown {
-  display: block;
-}
-
-.language-switcher button {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.language-switcher button:hover {
-  color: #f4a261;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
-.header1 {
-  width: 100%;
-  height: 40vh;
-  background-position: bottom;
+body.booking-body {
+  min-height: 100vh;
+  background: rgb(251, 255, 255);
   background-size: cover;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-.header1::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.815);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
-}
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 20px;
-  color: whitesmoke;
-  z-index: 10;
-}
-ul {
-  list-style-type: none;
-}
-.menu {
-  display: flex;
-  align-items: center;
-}
-li {
-  margin: 0 15px;
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-.menu a {
-  color: #f7f3f3;
-}
-.toggle-btn {
-  position: absolute;
-  display: none;
-  cursor: pointer;
-}
-@media screen and (max-width: 850px) {
-  .toggle-btn {
-    display: block;
-    position: absolute;
-    right: 30px;
-    top: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: whitesmoke;
-  }
-  .menu {
-    display: none;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    text-align: center;
-  }
-  .menu.active {
-    display: flex;
-  }
-  li {
-    padding: 12px 0;
-  }
-}
-.intro-content {
-  position: relative;
-  color: white;
-  text-align: center;
-  z-index: 2;
-}
-.intro-content h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-.intro-content p {
-  font-size: 18px;
-}
+  background-position: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+} 
 .reviews-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 40px 20px;
-  background-color: #f7f7f7;
+  padding: 50px 20px;
+  background-color: #f8f9fa;
 }
+
 .review-card {
   background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  max-width: 300px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .review-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+.review-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
 .review-card h3 {
-  font-size: 20px;
+  font-size: 1.2rem;
   color: #333;
   margin-top: 10px;
 }
-.review-card p {
-  font-size: 16px;
-  color: #555;
-}
+
+/* تنسيقات قسم إضافة رأي */
 .add-review {
-  background-color: #fff;
-  padding: 40px 20px;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
   text-align: center;
 }
+
 .add-review h2 {
-  font-size: 28px;
+  font-size: 2rem;
   color: #333;
   margin-bottom: 20px;
 }
+
 .add-review form {
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.add-review input,
+.add-review input[type="text"],
 .add-review textarea {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.add-review button {
-  background-color: #333;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.add-review input[type="text"]:focus,
+.add-review textarea:focus {
+  border-color: #555;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
 }
 
-.add-review button:hover {
-  background-color: #555;
-  transform: scale(1.05);
+.add-review textarea {
+  resize: vertical;
+  min-height: 150px;
 }
-.footer {
+
+.add-review button[type="submit"] {
+  width: 100%;
+  padding: 12px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.footer p {
-  font-size: 14px;
+/* تنسيقات للأجهزة الصغيرة */
+@media screen and (max-width: 768px) {
+  .reviews-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review-card {
+    max-width: 90%;
+  }
+
+  .add-review form {
+    padding: 15px;
+  }
+
+  .add-review input[type="text"],
+  .add-review textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .add-review button[type="submit"] {
+    padding: 10px;
+    font-size: 14px;
+  }
 }

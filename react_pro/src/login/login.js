@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // If using React Router
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../login/login.css';
 
 export function Login() {
   // State for form inputs and error handling
@@ -7,42 +8,59 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Add class to body on component mount and remove on unmount
+  useEffect(() => {
+    document.body.classList.add('login-body');
+    return () => {
+      document.body.classList.remove('login-body');
+    };
+  }, []);
 
   // Handle login form submission
-  const handleLogin = async (e) => {
+  const login = (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
+    setIsLoading(true);
 
-    try {
-      const response = await fetch('https://reqres.in/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
+    fetch("https://reqres.in/api/login", {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    })
+    .then(response => {
       if (response.status === 200) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token); // Save token to localStorage
-        window.location.href = '/Homepage.html'; // Redirect to homepage
+        return response.json();
       } else {
-        throw new Error('Invalid email or password');
+        throw new Error("Invalid email or password");
       }
-    } catch (error) {
-      setError(error.message); // Display error message
-    }
+    })
+    .then((data) => {
+      localStorage.setItem('token', data.token);
+      window.location.href = '/Homepage';
+    })
+    .catch((error) => {
+      setError(error.message);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
   };
 
   // Toggle password visibility
-  const togglePasswordVisibility = () => {
+  const togglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  // Handle Google Sign-In
+  // Handle Google Sign-In (optional)
   const handleGoogleSignIn = (googleUser) => {
     const profile = googleUser.getBasicProfile();
     const idToken = googleUser.getAuthResponse().id_token;
+
+    console.log('Google Profile:', profile);
+    console.log('Google ID Token:', idToken);
 
     fetch('/auth/google', {
       method: 'POST',
@@ -51,38 +69,38 @@ export function Login() {
       },
       body: JSON.stringify({ idToken }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          window.location.href = '/dashboard'; // Redirect to dashboard
-        } else {
-          console.log('Google sign-in failed');
-        }
-      })
-      .catch((error) => console.error('Error:', error));
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        window.location.href = '/dashboard';
+      } else {
+        console.log('Google sign-in failed');
+      }
+    })
+    .catch((error) => console.error('Error:', error));
   };
 
   return (
     <div className="Login">
-      <form onSubmit={handleLogin}>
+      <form onSubmit={login}>
         <h1>Login</h1>
+
         {/* Email Input */}
         <input
           type="email"
           className="email"
-          id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
           placeholder="Enter Your Email"
           required
         />
+
         {/* Password Input */}
         <div className="password-container">
           <input
             type={showPassword ? 'text' : 'password'}
             className="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
@@ -90,35 +108,40 @@ export function Login() {
             required
           />
           {/* Toggle Password Visibility */}
-          <span onClick={togglePasswordVisibility}>
+          <span onClick={togglePassword}>
             <i
               className={`toggle-pass fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
             ></i>
           </span>
         </div>
+
         {/* Error Message */}
-        {error && <div id="errorpass" style={{ color: 'red' }}>{error}</div>}
+        {error && <div id="errorpass">{error}</div>}
+
         {/* Submit Button */}
-        <button type="submit" className="btn">
-          Login
+        <button type="submit" className="btn" disabled={isLoading}>
+          {isLoading ? 'Loading...' : 'Login'}
         </button>
       </form>
+
       {/* Remember Me Checkbox */}
-      <div className="check">
+      <div className="check2">
         <input type="checkbox" className="check" id="rememberMe" required />
         <label htmlFor="rememberMe">Remember Me</label>
       </div>
+
       {/* Sign Up and Forgot Password Links */}
       <div className="newaccount">
-        Don't have an account?{' '}
-        <Link to="/signup">Sign up</Link> |{' '}
-        <Link to="/forgot-password">Forgot Password?</Link>
+        Don't have an account? <Link to="/signup">Sign up</Link> |{' '}
+        <Link to="/forgetpassword">Forgot Password?</Link>
       </div>
+
       {/* OR Divider */}
       <div className="or-divider">
         <span>OR</span>
       </div>
-      {/* Google Sign-In Button */}
+
+      {/* Google Sign-In Button (optional) */}
       <div
         className="g-signin2"
         data-onsuccess={handleGoogleSignIn}

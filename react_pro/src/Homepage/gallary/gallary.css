@@ -1,5 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap");
+body.gallary-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(251, 255, 255);
+  background-size: cover;
+  background-position: center;
+}
 
 html[lang="ar"] {
   direction: rtl;
@@ -55,12 +62,7 @@ html[lang="en"] {
 .language-switcher button:hover {
   color: #f4a261;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
+
 .header1 {
   position: relative;
   width: 100%;
@@ -72,7 +74,6 @@ html[lang="en"] {
   justify-content: center;
   height: 50vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
 }
@@ -88,41 +89,6 @@ html[lang="en"] {
   background-color: rgba(0, 0, 0, 0.815);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
-}
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 20px;
-  color: whitesmoke;
-  z-index: 10;
-}
-ul {
-  list-style-type: none;
-}
-.menu {
-  display: flex;
-  align-items: center;
-}
-li {
-  margin: 0 15px;
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-.menu a {
-  color: #f7f3f3;
-}
-.toggle-btn {
-  position: absolute;
-  display: none;
-  cursor: pointer;
 }
 @media screen and (max-width: 850px) {
   .toggle-btn {
@@ -172,21 +138,7 @@ a:hover {
   transition: .3s ease;
   filter: grayscale(100%);
 }
-
 .gallery img:hover{
   transform: scale(1.1);
   filter: grayscale(0);
-}
-.footer {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-.footer p {
-  font-size: 14px;
 }

@@ -1,73 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap");
-
-html[lang="ar"] {
-  direction: rtl;
-  text-align: right;
-  font-family: "Tajawal", sans-serif;
-}
-html[lang="en"] {
-  direction: ltr;
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
-.language-switcher {
-  position: relative;
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-.dropdown {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 100px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
-}
-.dropdown a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-}
-.dropdown a:hover {
-  background-color: #ddd;
-}
-.language-switcher:hover .dropdown {
-  display: block;
+body.home-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(251, 255, 255);
+  background-size: cover;
+  background-position: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.language-switcher button {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.language-switcher button:hover {
-  color: #f4a261;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
-header {
+.headers {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -77,7 +19,19 @@ header {
   align-items: center;
   justify-content: center;
   animation: fadeBackground 20s infinite alternate;
+  background-attachment: fixed;
 }
+.headers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  z-index: 1;
+}
+
 @keyframes fadeBackground {
   0% {
     background-image: url("../../../public/img/img.jpg");
@@ -95,16 +49,7 @@ header {
     background-image: url("../../../public/img/img.jpg");
   }
 }
-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
+
 .nav {
   position: fixed;
   top: 0;
@@ -113,33 +58,58 @@ header::before {
   width: 100%;
   justify-content: space-between;
   padding: 20px;
-  color: whitesmoke;
   z-index: 10;
 }
-ul {
-  list-style-type: none;
+
+.nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
 }
+
 .menu {
   display: flex;
   align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-li {
+
+.menu li {
   margin: 0 15px;
 }
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+
 .menu a {
   color: #f7f3f3;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
 }
-.toggle-btn {
+
+.menu a::after {
+  content: "";
   position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f7f3f3;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.toggle-btn {
   display: none;
   cursor: pointer;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
 }
+
 .intro-content {
   position: relative;
   z-index: 2;
@@ -148,85 +118,117 @@ a:hover {
 }
 
 .intro-content h1 {
-  font-size: 50px;
+  font-size: 48px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 15px;
-  font-family: "Courier New", monospace;
+  color: whitesmoke;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
 }
-.intro h1.fade-in {
-  opacity: 1;
-}
+
 .intro-content p {
   font-size: 1.2rem;
   text-align: center;
   color: whitesmoke;
   margin-bottom: 20px;
   font-family: "Courier New", monospace;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 1s forwards;
 }
+
 .cta-buttons {
   display: flex;
   justify-content: center;
   gap: 20px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 2s forwards;
 }
+
 .cta-btn {
-  background: linear-gradient(45deg, #c7c6c5, #75664a83);
+  background: linear-gradient(45deg, #686461, #77644083);
   color: whitesmoke;
   padding: 15px 30px;
   text-decoration: none;
   border-radius: 5px;
   font-size: 1.1rem;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  transition: all 0.3s ease;
-  font-family: "Courier New", monospace;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
-.cta-btn:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+.cta-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: all 0.5s ease;
+  z-index: 0;
 }
+
+.cta-btn:hover::before {
+  width: 0;
+  height: 0;
+}
+
+.cta-btn span {
+  position: relative;
+  z-index: 1;
+}
+
 @media screen and (max-width: 850px) {
   .toggle-btn {
     display: block;
     position: absolute;
     right: 30px;
     top: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: whitesmoke;
   }
 
   .menu {
     display: none;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 60px;
     right: 0;
-    width: 200px;
+    width: 100%;
     text-align: center;
+    z-index: 1000;
   }
+
   .menu.active {
     display: flex;
   }
-  .cta-btn {
-    transition: all 0.3s ease;
+
+  .menu li {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .cta-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  .menu li:last-child {
+    border-bottom: none;
   }
-  li {
-    padding: 12px 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 .footer {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   bottom: 0;
   width: 100%;

@@ -27,7 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-        <Route path="*" element={<Notfound />} /> {/* صفحة 404 */}
+        <Route path="*" element={<Notfound />} /> 
       </Routes>
     </Router>
   );

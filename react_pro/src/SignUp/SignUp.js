@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
-import '../SignUp/SignUp.css'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../SignUp/SignUp.css';
+
 export function SignUp() {
- 
   const [formData, setFormData] = useState({
     firstName: '',
     midName: '',
@@ -13,9 +13,17 @@ export function SignUp() {
     phone: '',
     birthday: '',
   });
+
   const [error, setError] = useState('');
 
-  
+  // إضافة وإزالة className لـ body
+  useEffect(() => {
+    document.body.classList.add('signup-body'); // إضافة className عند تحميل الصفحة
+    return () => {
+      document.body.classList.remove('signup-body'); // إزالته عند مغادرة الصفحة
+    };
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,18 +32,17 @@ export function SignUp() {
     });
   };
 
- 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(''); 
+    setError('');
 
-
+    // التحقق من تطابق كلمات المرور
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
     }
 
-
+    // إرسال البيانات (يمكن استبدال هذا الجزء بالاتصال بالخادم)
     console.log('Form Data:', formData);
     alert('Sign up successful!');
   };
@@ -44,6 +51,7 @@ export function SignUp() {
     <div className="rejist">
       <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
+
         {/* First Name */}
         <input
           type="text"
@@ -55,6 +63,7 @@ export function SignUp() {
           placeholder="First Name"
           required
         />
+
         {/* Mid Name */}
         <input
           type="text"
@@ -66,6 +75,7 @@ export function SignUp() {
           placeholder="Mid Name"
           required
         />
+
         {/* Last Name */}
         <input
           type="text"
@@ -77,6 +87,7 @@ export function SignUp() {
           placeholder="Last Name"
           required
         />
+
         {/* Email */}
         <input
           type="email"
@@ -88,6 +99,7 @@ export function SignUp() {
           placeholder="Email"
           required
         />
+
         {/* Password */}
         <input
           type="password"
@@ -99,10 +111,11 @@ export function SignUp() {
           placeholder="Password"
           required
         />
+
         {/* Confirm Password */}
         <input
           type="password"
-          className="Confirm Password"
+          className="ConfirmPassword"
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleInputChange}
@@ -110,6 +123,7 @@ export function SignUp() {
           placeholder="Confirm Password"
           required
         />
+
         {/* Phone Number */}
         <input
           type="tel"
@@ -121,6 +135,7 @@ export function SignUp() {
           placeholder="Phone Number"
           required
         />
+
         {/* Birthday */}
         <input
           type="date"
@@ -132,20 +147,24 @@ export function SignUp() {
           placeholder="Birthday"
           required
         />
+
         {/* Error Message */}
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {error && <div className="error-message">{error}</div>}
+
         {/* Submit Button */}
-        <button type="submit" className="btn">
+        <button type="submit" className="btn1">
           Sign Up
         </button>
       </form>
+
       {/* Terms & Conditions */}
-      <div className="check">
+      <div className="check1">
         <input type="checkbox" className="check" id="terms" required />
         <label htmlFor="terms">
           I agree to these <a href="#">Terms & Conditions</a>
         </label>
       </div>
+
       {/* Login Link */}
       <div className="member">
         Already a member? <Link to="/login">Login here</Link>

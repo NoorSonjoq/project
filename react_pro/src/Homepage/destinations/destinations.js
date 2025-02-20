@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom"; 
+import React, { useEffect } from 'react';
 import '../destinations/destinations.css'
 
 export function Destinations() {
@@ -11,6 +10,13 @@ export function Destinations() {
       element.textContent = translations[lang][key] || element.textContent;
     });
   };
+  // إضافة وإزالة className لـ body
+  useEffect(() => {
+    document.body.classList.add('booking-body'); // إضافة className عند تحميل الصفحة
+    return () => {
+      document.body.classList.remove('booking-body'); // إزالته عند مغادرة الصفحة
+    };
+  }, []);
 
   const translations = {
     en: {
@@ -57,15 +63,15 @@ export function Destinations() {
         <h1 className="logo">DiscoverJordan</h1>
         <button className="toggle-btn">&#9776;</button>
         <ul className="menu">
-          <li><Link to="/"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></Link></li>
-          <li><Link to="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></Link></li>
-          <li><Link to="/services"><i className="fas fa-cogs"></i> <span className="lang-text" data-lang="services">Services</span></Link></li>
-          <li><Link to="/destinations"><i className="fas fa-map-marker-alt"></i> <span className="lang-text" data-lang="destinations">Destinations</span></Link></li>
-          <li><Link to="/reviews"><i className="fas fa-star"></i> <span className="lang-text" data-lang="reviews">Reviews</span></Link></li>
-          <li><Link to="/gallery"><i className="fas fa-images"></i> <span className="lang-text" data-lang="gallery">Gallery</span></Link></li>
-          <li><Link to="/contactus"><i className="fas fa-envelope"></i> <span className="lang-text" data-lang="contact">Contact Us</span></Link></li>
-          <li><Link to="/booking"><i className="fas fa-calendar-check"></i> <span className="lang-text" data-lang="booking">Booking</span></Link></li>
-          <li><Link to="/login"><i className="fas fa-sign-in-alt"></i> <span className="lang-text" data-lang="login">Login</span></Link></li>
+        <li><a href="/Homepage"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></a></li>
+          <li><a href="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></a></li>
+          <li><a href="/services"><i className="fas fa-cogs"></i> <span className="lang-text" data-lang="services">Services</span></a></li>
+          <li><a href="/destinations"><i className="fas fa-map-marker-alt"></i> <span className="lang-text" data-lang="destinations">Destinations</span></a></li>
+          <li><a href="/reviews"><i className="fas fa-star"></i> <span className="lang-text" data-lang="reviews">Reviews</span></a></li>
+          <li><a href="/gallery"><i className="fas fa-images"></i> <span className="lang-text" data-lang="gallery">Gallery</span></a></li>
+          <li><a href="/contactus"><i className="fas fa-envelope"></i> <span className="lang-text" data-lang="contact">Contact Us</span></a></li>
+          <li><a href="/booking"><i className="fas fa-calendar-check"></i> <span className="lang-text" data-lang="booking">Booking</span></a></li>
+          <li><a href="/login"><i className="fas fa-sign-in-alt"></i> <span className="lang-text" data-lang="login">Login</span></a></li>
         </ul>
         <div className="language-switcher">
           <button onClick={() => switchLanguage('en')}>EN</button>
