@@ -1,152 +1,162 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../login/login.css';
 
 export function Login() {
-  // State for form inputs and error handling
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  // Add class to body on component mount and remove on unmount
+  const navigate = useNavigate();
   useEffect(() => {
-    document.body.classList.add('login-body');
+    document.body.classList.add('login-body'); // إضافة className عند تحميل الصفحة
     return () => {
-      document.body.classList.remove('login-body');
+      document.body.classList.remove('login-body'); // إزالته عند مغادرة الصفحة
     };
   }, []);
+  // تحميل مكتبة Google API عند تشغيل الصفحة
+  useEffect(() => {
+    const loadGoogleAPI = () => {
+      const script = document.createElement('script');
+      script.src = "https://accounts.google.com/gsi/client"; // ✅ الحل البديل
+      script.async = true;
+      script.defer = true;
+      script.crossOrigin = "anonymous"; // ✅ يمنع Script error
+      script.onload = () => {
+        console.log("Google API Loaded");
+      };
+      document.body.appendChild(script);
+    };
+  
+    loadGoogleAPI();
+  }, []);
+  
 
-  // Handle login form submission
-  const login = (e) => {
+  // معالجة تسجيل الدخول عبر البريد وكلمة المرور
+  const login = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError('');
 
-    fetch("https://reqres.in/api/login", {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    })
-    .then(response => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error("Invalid email or password");
-      }
-    })
-    .then((data) => {
+    try {
+      const response = await fetch("https://reqres.in/api/login", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) throw new Error("Invalid email or password");
+
+      const data = await response.json();
       localStorage.setItem('token', data.token);
-      window.location.href = '/Homepage';
-    })
-    .catch((error) => {
-      setError(error.message);
-    })
-    .finally(() => {
+      navigate('/Homepage');
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setIsLoading(false);
-    });
+    }
   };
 
-  // Toggle password visibility
+  // تفعيل وإلغاء رؤية كلمة المرور
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  // Handle Google Sign-In (optional)
-  const handleGoogleSignIn = (googleUser) => {
-    const profile = googleUser.getBasicProfile();
-    const idToken = googleUser.getAuthResponse().id_token;
+  // تسجيل الدخول عبر Google
+  const handleGoogleSignIn = async (googleUser) => {
+    try {
+      const profile = googleUser.getBasicProfile();
+      const idToken = googleUser.getAuthResponse().id_token;
 
-    console.log('Google Profile:', profile);
-    console.log('Google ID Token:', idToken);
+      console.log('Google Profile:', profile);
+      console.log('Google ID Token:', idToken);
 
-    fetch('/auth/google', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ idToken }),
-    })
-    .then((response) => response.json())
-    .then((data) => {
+      const response = await fetch('/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken }),
+      });
+
+      const data = await response.json();
       if (data.success) {
-        window.location.href = '/dashboard';
+        navigate('/dashboard');
       } else {
-        console.log('Google sign-in failed');
+        setError('Google sign-in failed');
       }
-    })
-    .catch((error) => console.error('Error:', error));
+    } catch (err) {
+      console.error('Google Sign-In Error:', err);
+      setError('Google sign-in error');
+    }
   };
 
   return (
-    <div className="Login">
-      <form onSubmit={login}>
-        <h1>Login</h1>
+    <>
+      <div className="Login">
+        <form onSubmit={login}>
+          <h1>Login</h1>
 
-        {/* Email Input */}
-        <input
-          type="email"
-          className="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-          placeholder="Enter Your Email"
-          required
-        />
-
-        {/* Password Input */}
-        <div className="password-container">
+          {/* حقل البريد الإلكتروني */}
           <input
-            type={showPassword ? 'text' : 'password'}
-            className="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-            placeholder="Password"
+            type="email"
+            className="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            placeholder="Enter Your Email"
             required
           />
-          {/* Toggle Password Visibility */}
-          <span onClick={togglePassword}>
-            <i
-              className={`toggle-pass fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-            ></i>
-          </span>
+
+          {/* حقل كلمة المرور */}
+          <div className="password-container">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              className="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              placeholder="Password"
+              required
+            />
+            <span onClick={togglePassword}>
+              <i className={`toggle-pass fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}></i>
+            </span>
+          </div>
+
+          {/* رسالة الخطأ */}
+          {error && <div id="errorpass">{error}</div>}
+
+          {/* زر تسجيل الدخول */}
+          <button type="submit" className="btnn" disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Login'}
+          </button>
+        </form>
+
+        {/* تفعيل خيار "تذكرني" */}
+        <div className="check2">
+          <input type="checkbox" className="check2" id="rememberMe" required />
+          <label htmlFor="rememberMe">Remember Me</label>
         </div>
 
-        {/* Error Message */}
-        {error && <div id="errorpass">{error}</div>}
+        {/* روابط التسجيل واستعادة كلمة المرور */}
+        <div className="newaccount">
+          Don't have an account? <Link to="/signup">Sign up</Link> |{' '}
+          <Link to="/forgetpassword">Forgot Password?</Link>
+        </div>
 
-        {/* Submit Button */}
-        <button type="submit" className="btn" disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Login'}
-        </button>
-      </form>
+        {/* خط فاصل بين طرق تسجيل الدخول */}
+        <div className="or-divider">
+          <span>OR</span>
+        </div>
 
-      {/* Remember Me Checkbox */}
-      <div className="check2">
-        <input type="checkbox" className="check" id="rememberMe" required />
-        <label htmlFor="rememberMe">Remember Me</label>
+        {/* زر تسجيل الدخول عبر Google */}
+        <div className="g-signin2" data-onsuccess={handleGoogleSignIn}></div>
       </div>
 
-      {/* Sign Up and Forgot Password Links */}
-      <div className="newaccount">
-        Don't have an account? <Link to="/signup">Sign up</Link> |{' '}
-        <Link to="/forgetpassword">Forgot Password?</Link>
-      </div>
-
-      {/* OR Divider */}
-      <div className="or-divider">
-        <span>OR</span>
-      </div>
-
-      {/* Google Sign-In Button (optional) */}
-      <div
-        className="g-signin2"
-        data-onsuccess={handleGoogleSignIn}
-        data-clientid="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
-      ></div>
-    </div>
+      {/* الفوتر */}
+      <footer className="footer2">
+        <p data-lang="footer" className="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+      </footer>
+    </>
   );
 }

@@ -71,9 +71,9 @@ export function Contactus() {
 
   return (
     <>
-      <nav className="nav">
+      <nav className="nav3">
         <h1 className="logo">DiscoverJordan</h1>
-        <button className="toggle-btn">&#9776;</button>
+        <button className="toggle-btn3">&#9776;</button>
         <ul className="menu">
         <li><a href="/Homepage"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></a></li>
           <li><a href="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></a></li>
@@ -121,7 +121,7 @@ export function Contactus() {
           </div>
         </div>
       </section>
-      <footer className="footer">
+      <footer className="footer3">
         <p className="lang-text" data-lang="footer">© 2025 DiscoverJordan | All rights reserved.</p>
       </footer>
     </>

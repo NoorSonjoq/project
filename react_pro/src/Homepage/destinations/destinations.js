@@ -59,9 +59,9 @@ export function Destinations() {
 
   return (
     <>
-      <nav className="nav">
+      <nav className="nav4">
         <h1 className="logo">DiscoverJordan</h1>
-        <button className="toggle-btn">&#9776;</button>
+        <button className="toggle-btn4">&#9776;</button>
         <ul className="menu">
         <li><a href="/Homepage"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></a></li>
           <li><a href="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></a></li>
@@ -110,7 +110,7 @@ export function Destinations() {
           </div>
         </div>
       </section>
-      <footer className="footer">
+      <footer className="footer4">
         <p data-lang="footer" className="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
       </footer>
     </>

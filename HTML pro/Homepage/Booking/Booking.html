@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <link rel="stylesheet" href="./Booking.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" media="print" onload="this.media='all'">
+</head>
+<body >
+    <nav class="nav"> 
+        <h1 class="logo">DiscoverJordan</h1>
+        <button class="toggle-btn">&#9776;</button>
+        <ul class="menu">
+            <li><a href="../Homepage/Homepage.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../aboutus/aboutus.html"><i class="fas fa-info-circle"></i> About Us</li>
+            <li><a href="../services/services.html"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="../destinations/destinations.html"><i class="fas fa-map-marker-alt"></i> Destinations</a></li> 
+            <li><a href="../reviews/reviews.html"><i class="fas fa-star"></i> Reviews</a></li> 
+            <li><a href="../gallary/gallary.html"><i class="fas fa-images"></i> Gallery</a></li> 
+            <li><a href="../contactus/contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li> 
+            <li><a href="../Booking/Booking.html"><i class="fas fa-calendar-check"></i> Booking</a></li> 
+            <li><a href="../../login/login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li> 
+        </ul>
+    </nav>
+    <header class="header1">
+        <div class="intro-content">
+            <h1 >Book Now</h1>
+        </div>
+    </header>
+    <section class="form-section">
+        <div class="form-container">
+            <form action="/submit-booking" method="POST">
+                <label  for="name" >Full Name:</label>
+                <input class="inp" type="text" id="name" name="name"  placeholder="Enter your Name" required>
+    
+                <label for="email" >Email:</label>
+                <input class="inp" type="email" id="email" name="email" placeholder="Enter your  Email" required>
+    
+                <label  for="phone" >Phone Number:</label>
+                <input class="inp" type="tel" id="phone" name="phone"  placeholder="Enter your  Phone" required>
+    
+                <label  for="date" >Booking Date:</label>
+                <input class="inp"type="date" id="date" name="date" required>
+                <fieldset>
+                    <legend >Select Your Services:</legend>
+                    <label class="check"><input type="checkbox" name="services[]" value="Tourist Tours"> Tourist Tours</label><br>
+                    <label class="check" ><input type="checkbox" name="services[]" value="Historical & Cultural Tours"> Historical & Cultural Tours</label><br>
+                    <label class="check"><input type="checkbox" name="services[]" value="Accommodation Services"> Accommodation Services</label><br>
+                    <label class="check"><input type="checkbox" name="services[]" value="Transportation Services"> Transportation Services</label><br>
+                    <label class="check"><input type="checkbox" name="services[]" value="Private Tours"> Private Tours</label><br>
+                    <label class="check" ><input type="checkbox" name="services[]" value="Restaurants"> Restaurants</label>
+                </fieldset>
+    
+                <button type="submit" class="submit-button lang-text">Submit Booking</button>           
+             </form>
+        </div>
+    </section>
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <button class="er" classwsonclick="closeNotification()">&times;</button>
+      </div>
+      </div>
+    <footer class="footer">
+        <p >© 2025 DiscoverJordan | All rights reserved.</p>
+    </footer>
+<script src="Booking.js"></script>
+    <script src="../language.js"></script>
+</body>
+</html>

@@ -48,9 +48,10 @@ export function SignUp() {
   };
 
   return (
-    <div className="rejist">
+    <>
+       <div className="rejist">
       <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
+        <h1 className='H'>Sign Up</h1>
 
         {/* First Name */}
         <input
@@ -67,7 +68,7 @@ export function SignUp() {
         {/* Mid Name */}
         <input
           type="text"
-          className="Lastname"
+          className="Midname"
           name="midName"
           value={formData.midName}
           onChange={handleInputChange}
@@ -91,7 +92,7 @@ export function SignUp() {
         {/* Email */}
         <input
           type="email"
-          className="Email"
+          className="Email1"
           name="email"
           value={formData.email}
           onChange={handleInputChange}
@@ -148,27 +149,28 @@ export function SignUp() {
           required
         />
 
-        {/* Error Message */}
-        {error && <div className="error-message">{error}</div>}
-
         {/* Submit Button */}
         <button type="submit" className="btn1">
-          Sign Up
+          Submit
         </button>
       </form>
 
       {/* Terms & Conditions */}
       <div className="check1">
-        <input type="checkbox" className="check" id="terms" required />
+        <input type="checkbox" className="check1" id="terms" required />
         <label htmlFor="terms">
           I agree to these <a href="#">Terms & Conditions</a>
         </label>
       </div>
 
       {/* Login Link */}
-      <div className="member">
+      <div className="member1">
         Already a member? <Link to="/login">Login here</Link>
       </div>
     </div>
+    <footer className="footer1">
+        <p data-lang="footer" className="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+    </footer>
+    </>
   );
 }

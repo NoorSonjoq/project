@@ -1,6 +1,26 @@
-/* الخلفية العامة للصفحة */
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 100px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
 body.aboutus-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../../public/img/img4.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../img/img4.jpg');
   background-size: cover;
   background-position: center;
   margin: 0;
@@ -9,7 +29,6 @@ body.aboutus-body {
   position: relative;
 }
 
-/* طبقة شبه شفافة فوق الخلفية */
 body.aboutus-body::before {
   content: '';
   position: absolute;
@@ -17,11 +36,10 @@ body.aboutus-body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(206, 206, 206, 0.192);
   z-index: 1;
 }
 
-/* Header2 */
 .header2 {
   position: relative;
   z-index: 2;
@@ -34,9 +52,20 @@ body.aboutus-body::before {
   text-align: center;
   color: #fff;
   padding: 50px;
+  background-attachment: fixed;
 }
 
-/* العنوان الرئيسي */
+.header2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1; 
+}
+
 .header2 h1 {
   font-size: 30px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
@@ -44,11 +73,12 @@ body.aboutus-body::before {
   opacity: 0;
   animation: fadeIn 1.5s ease-in-out forwards;
   padding: 10px;
-
 }
+
 .header2 h1.fade-in {
   opacity: 1;
 }
+
 .header2 p {
   font-size: 18px;
   line-height: 1.6;
@@ -57,7 +87,6 @@ body.aboutus-body::before {
   animation: fadeIn 2s ease-in-out forwards;
   text-align: center;
   padding: 10px;
-
 }
 
 @keyframes fadeIn {
@@ -65,22 +94,81 @@ body.aboutus-body::before {
   to { opacity: 1; }
 }
 
-.language-switcher button {
-  background: none;
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 5px 10px;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 .content {
   align-items: center;
   gap: 20px;
   padding: 60px;
 }
-/* تصميم للهواتف المحمولة */
+
+.navv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  color: whitesmoke;
+  z-index: 10;
+}
+
+.navv .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+ul {
+  list-style-type: none;
+}
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu a {
+  color: #f7f3f3;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.menu a i {
+  font-size: 18px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover i {
+  color: #f4a261;
+}
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f7f3f3;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+.toggle-btnn {
+  display: none; 
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .menu {
     flex-direction: column;
@@ -88,7 +176,7 @@ body.aboutus-body::before {
     position: absolute;
     top: 60px;
     right: 0;
-    width: 100%;
+    width: 200px;
     display: none;
   }
 
@@ -101,15 +189,9 @@ body.aboutus-body::before {
     text-align: center;
   }
 
-  .toggle-btn {
+  .toggle-btnn {
     display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-  }
-
+    }
   .header2 h1 {
     font-size: 24px;
   }
@@ -117,4 +199,23 @@ body.aboutus-body::before {
   .header2 p {
     font-size: 16px;
   }
+}
+
+
+
+.footerr {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  backdrop-filter: blur(5px); 
+}
+
+.footerr p {
+  font-size: 14px;
+  margin: 0;
 }

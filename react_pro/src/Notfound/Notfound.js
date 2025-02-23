@@ -12,12 +12,17 @@ export function Notfound() {
   }, []);
 
   return (
-    <div className="notfound" role="main">
+    <>
+       <div className="notfound" role="main">
       <h1 className="h">404 - Page Not Found</h1>
       <p className="p">The page you are looking for does not exist.</p>
-      <p className="a">
+      <p className="btn-home">
         <Link to="/Homepage">Go back to the homepage</Link>
       </p>
     </div>
+    <footer class="footer1">
+    <p data-lang="footer" class="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+</footer>
+    </>
   );
 }

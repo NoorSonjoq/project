@@ -1,26 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap");
 
-html[lang="ar"] {
-  direction: rtl;
-  text-align: right;
-  font-family: "Tajawal", sans-serif;
-}
-html[lang="en"] {
-  direction: ltr;
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-}
-
-.language-switcher {
-  position: relative;
-  display: inline-block;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 .dropdown {
   display: none;
   position: absolute;
@@ -43,23 +23,6 @@ html[lang="en"] {
   background-color: #ddd;
 }
 
-.language-switcher:hover .dropdown {
-  display: block;
-}
-
-.language-switcher button {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.language-switcher button:hover {
-  color: #f4a261;
-}
 
 * {
   margin: 0;
@@ -67,8 +30,25 @@ html[lang="en"] {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
-/* Header2 */
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../img/img4.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(206, 206, 206, 0.192);
+  z-index: 1;
+}
 .header2 {
   position: relative;
   z-index: 2;
@@ -81,12 +61,8 @@ html[lang="en"] {
   text-align: center;
   color: #fff;
   padding: 50px;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../img/img4.jpg") center/cover no-repeat;
   background-attachment: fixed;
 }
-
-/* إضافة طبقة شفافة باللون الأسود */
 .header2::before {
   content: "";
   position: absolute;
@@ -94,11 +70,10 @@ html[lang="en"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* اللون الأسود مع 50% شفافية */
-  z-index: -1; /* تأكد من أن الطبقة تكون خلف المحتوى */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
-/* العنوان الرئيسي */
 .header2 h1 {
   font-size: 30px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
@@ -106,13 +81,11 @@ html[lang="en"] {
   opacity: 0;
   animation: fadeIn 1.5s ease-in-out forwards;
   padding: 10px;
-
 }
 
 .header2 h1.fade-in {
   opacity: 1;
 }
-
 .header2 p {
   font-size: 18px;
   line-height: 1.6;
@@ -121,10 +94,7 @@ html[lang="en"] {
   animation: fadeIn 2s ease-in-out forwards;
   text-align: center;
   padding: 10px;
-
-
 }
-
 
 @keyframes fadeIn {
   from {
@@ -134,8 +104,11 @@ html[lang="en"] {
     opacity: 1;
   }
 }
-
-/* القائمة */
+.content {
+  align-items: center;
+  gap: 20px;
+  padding: 60px;
+}
 .nav {
   position: fixed;
   top: 0;
@@ -144,6 +117,7 @@ html[lang="en"] {
   width: 100%;
   justify-content: space-between;
   padding: 20px;
+  color: whitesmoke;
   z-index: 10;
 }
 
@@ -152,13 +126,12 @@ html[lang="en"] {
   font-weight: bold;
   color: white;
 }
-
+ul {
+  list-style-type: none;
+}
 .menu {
   display: flex;
   align-items: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 .menu li {
@@ -171,7 +144,14 @@ html[lang="en"] {
   position: relative;
   transition: color 0.3s ease;
 }
-
+.menu a i {
+  font-size: 18px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+.menu a:hover i {
+  color: #f4a261;
+}
 .menu a::after {
   content: "";
   position: absolute;
@@ -186,23 +166,18 @@ html[lang="en"] {
 .menu a:hover::after {
   width: 100%;
 }
-
 .toggle-btn {
-  display: none;
+  display: none; 
   cursor: pointer;
-  font-size: 24px;
+  font-size: 20px;
   color: white;
   background: none;
   border: none;
+  position: absolute;
+  right: 20px;
 }
 
-.content {
-  align-items: center;
-  gap: 20px;
-  padding: 60px;
-}
 
-/* تصميم للهواتف المحمولة */
 @media screen and (max-width: 768px) {
   .menu {
     flex-direction: column;
@@ -210,7 +185,7 @@ html[lang="en"] {
     position: absolute;
     top: 60px;
     right: 0;
-    width: 100%;
+    width: 200px;
     display: none;
   }
 
@@ -225,13 +200,7 @@ html[lang="en"] {
 
   .toggle-btn {
     display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-  }
-
+    }
   .header2 h1 {
     font-size: 24px;
   }
@@ -241,8 +210,9 @@ html[lang="en"] {
   }
 }
 
+
 .footer {
-  background-color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   text-align: center;
   padding: 10px;
@@ -250,8 +220,11 @@ html[lang="en"] {
   bottom: 0;
   width: 100%;
   z-index: 1;
+  backdrop-filter: blur(5px);
 }
 
 .footer p {
   font-size: 14px;
+  margin: 0;
+
 }
