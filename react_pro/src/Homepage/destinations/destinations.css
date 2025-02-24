@@ -1,20 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 body.destinations-body {
   min-height: 100vh;
   background: rgb(251, 255, 255);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  padding-bottom: 10px;
+}
 
-} 
+.header1 {
+  width: 100%;
+  height: 40vh;
+  background-position: bottom;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.header1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.815);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 15px;
+  color: whitesmoke;
+  z-index: 10;
+}
+
+.nav .logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu.active {
+  display: flex;
+}
+
+.menu li {
+  margin: 0 18px;
+  
+}
+
+.menu a {
+  color: #f7f3f3;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu a i {
+  font-size: 16px;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover i {
+  color: #f4a261;
+  
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f7f3f3;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.toggle-btn4{
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+
 @media screen and (max-width: 850px) {
   .toggle-btn {
     display: block;
-    position: absolute;
-    right: 30px;
-    top: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: whitesmoke;
   }
+
   .menu {
     display: none;
     flex-direction: column;
@@ -25,9 +134,11 @@ body.destinations-body {
     width: 200px;
     text-align: center;
   }
+
   .menu.active {
     display: flex;
   }
+
   li {
     padding: 12px 0;
   }
@@ -50,6 +161,7 @@ body.destinations-body {
   gap: 20px;
   flex-wrap: wrap;
 }
+
 .destination-card {
   background: white;
   border-radius: 10px;
@@ -60,29 +172,6 @@ body.destinations-body {
   transition: transform 0.3s ease-in-out;
   margin-bottom: 30px;
 }
-.destination-card img {
-  width: 100%;
-  border-radius: 10px;
-  height: 200px;
-  object-fit: cover;
-}
-.destination-card h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-top: 10px;
-}
-.destination-card p {
-  font-size: 1rem;
-  color: #666;
-  margin-top: 10px;
-}
-.destination-card:hover {
-  transform: scale(1.05);
-}
-.destination-card a {
-  text-decoration: none;
-  color: inherit;
-}
 
 .destination-card img {
   width: 100%;
@@ -90,14 +179,34 @@ body.destinations-body {
   height: 200px;
   object-fit: cover;
 }
+
+.destination-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.destination-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 10px;
+}
+
 .destination-card:hover {
   transform: scale(1.05);
 }
+
+.destination-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .map-section {
   text-align: center;
   padding: 50px 20px;
   background-color: #f4f4f4;
 }
+
 .map-container {
   max-width: 800px;
   margin: auto;
@@ -105,12 +214,28 @@ body.destinations-body {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
 @media screen and (max-width: 850px) {
   .destinations-container {
     flex-direction: column;
     align-items: center;
   }
+
   .destination-card {
     max-width: 90%;
   }
+}
+
+.footer4 {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer4 p {
+  font-size: 14px;
 }

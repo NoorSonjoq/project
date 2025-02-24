@@ -1,15 +1,14 @@
 body.home-body {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
-  background: rgb(251, 255, 255);
-  background-size: cover;
-  background-position: center;
+  margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
 .headers {
+  flex: 1;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -21,6 +20,7 @@ body.home-body {
   animation: fadeBackground 20s infinite alternate;
   background-attachment: fixed;
 }
+
 .headers::before {
   content: "";
   position: absolute;
@@ -50,7 +50,7 @@ body.home-body {
   }
 }
 
-.nav {
+.nav6 {
   position: fixed;
   top: 0;
   left: 0;
@@ -59,9 +59,10 @@ body.home-body {
   justify-content: space-between;
   padding: 20px;
   z-index: 10;
+  background: rgba(0, 0, 0, 0);
 }
 
-.nav .logo {
+.nav6 .logo {
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -93,7 +94,7 @@ body.home-body {
   left: 0;
   width: 0;
   height: 2px;
-  background: #f7f3f3;
+  background: #f4a261;
   transition: width 0.3s ease;
 }
 
@@ -146,8 +147,8 @@ body.home-body {
 }
 
 .cta-btn {
-  background: linear-gradient(45deg, #686461, #77644083);
-  color: whitesmoke;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  color: white;
   padding: 15px 30px;
   text-decoration: none;
   border-radius: 5px;
@@ -175,9 +176,20 @@ body.home-body {
   height: 0;
 }
 
-.cta-btn span {
-  position: relative;
-  z-index: 1;
+.cta-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -214,26 +226,3 @@ body.home-body {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.footer {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-.footer p {
-  font-size: 14px;
-}

@@ -21,7 +21,7 @@ export function Notfound() {
       </p>
     </div>
     <footer class="footer1">
-    <p data-lang="footer" class="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+    <p >© 2025 DiscoverJordan | All rights reserved.</p>
 </footer>
     </>
   );

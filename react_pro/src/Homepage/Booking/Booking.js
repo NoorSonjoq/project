@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Booking/Booking.css';
 
 export function Booking() {
+  const [menuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
   useEffect(() => {
-    document.body.classList.add('booking-body'); 
+    document.body.classList.add('booking-body');
     return () => {
-      document.body.classList.remove('booking-body'); 
+      document.body.classList.remove('booking-body');
     };
   }, []);
 
@@ -23,7 +29,7 @@ export function Booking() {
     };
   }, []);
 
-  function handleFormSubmit(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     const isBookingSuccessful = Math.random() > 0.5;
     if (isBookingSuccessful) {
@@ -31,9 +37,9 @@ export function Booking() {
     } else {
       showNotification("حدث خطأ أثناء الحجز. يرجى المحاولة مرة أخرى.", false);
     }
-  }
+  };
 
-  function showNotification(message, isSuccess) {
+  const showNotification = (message, isSuccess) => {
     const notification = document.getElementById("notification");
     const notificationMessage = document.getElementById("notification-message");
 
@@ -53,40 +59,21 @@ export function Booking() {
     setTimeout(() => {
       notification.style.display = "none";
     }, 5000);
-  }
+  };
 
-  function closeNotification() {
+  const closeNotification = () => {
     const notification = document.getElementById("notification");
     if (notification) {
       notification.style.display = "none";
     }
-  }
-
-  useEffect(() => {
-    const toggleBtn = document.querySelector(".toggle-btn2");
-    const menu = document.querySelector(".menu");
-  
-    function handleToggle() {
-      menu.classList.toggle("active");
-    }
-  
-    if (toggleBtn && menu) {
-      toggleBtn.addEventListener("click", handleToggle);
-    }
-  
-    return () => {
-      if (toggleBtn) {
-        toggleBtn.removeEventListener("click", handleToggle);
-      }
-    };
-  }, []);
+  };
 
   return (
     <>
       <nav className="nav2">
         <h1 className="logo">DiscoverJordan</h1>
-        <button className="toggle-btn2"><i className="fas fa-bars"></i></button>
-        <ul className="menu">
+        <button className="toggle-btn2" onClick={toggleMenu}>&#9776;</button>
+        <ul className={`menu ${menuActive ? 'active' : ''}`}>
           <li><Link to="/Homepage"><i className="fas fa-home"></i> Home</Link></li>
           <li><Link to="/aboutus"><i className="fas fa-info-circle"></i> About Us</Link></li>
           <li><Link to="/services"><i className="fas fa-cogs"></i> Services</Link></li>
@@ -140,7 +127,7 @@ export function Booking() {
         <button onClick={closeNotification}>X</button>
       </div>
 
-      <footer className="footer2">
+      <footer className="footer22">
         <p>© 2025 DiscoverJordan | All rights reserved.</p>
       </footer>
     </>

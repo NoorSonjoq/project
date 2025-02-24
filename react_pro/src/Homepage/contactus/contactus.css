@@ -1,22 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 body.contactus-body {
   min-height: 100vh;
   background: rgb(251, 255, 255);
-  background-size: cover;
-  background-position: center;
-} 
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  padding-bottom: 10px;
+}
 
+.nav3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 13px;
+  color: whitesmoke;
+  z-index: 10;
+}
+
+.nav3 .logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu.active {
+  display: flex;
+}
+
+.menu li {
+  margin: 0 18px;
+}
+
+.menu a {
+  color: #f7f3f3;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu a i {
+  font-size: 16px;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover i {
+  color: #f4a261;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f7f3f3;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.toggle-btn3 {
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.header1 {
+  width: 100%;
+  height: 40vh;
+  background-position: bottom;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.header1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.815);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.intro-content3 {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.intro-content3 h1 {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: whitesmoke;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.intro-content3 p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: whitesmoke;
+  margin-bottom: 20px;
+  font-family: 'Courier New', monospace;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.contact-section3 {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.form-container3 {
+  width: 50%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-container3 h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-container3 input
+{
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #999999;
+  border-radius: 8px;
+  pointer-events: auto !important;
+  background: #333;
+  color: #f8f5f5;
+}
+
+.form-container3 textarea {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #999999;
+  border-radius: 8px;
+  pointer-events: auto !important;
+  color: #f8f5f5;
+  margin-left: 20px;
+}
+.form-container3 button {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.form-container3 button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.contact-info3 {
+  width: 40%;
+}
+
+.contact-info3 .address,
+.contact-info3 .social {
+  margin-bottom: 30px;
+}
+
+.contact-info3 h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-info3 p {
+  font-size: 16px;
+  color: #555;
+}
+
+.social-icon3 {
+  font-size: 30px;
+  color: #333;
+  margin: 10px;
+  transition: color 0.3s ease;
+}
+
+.social-icon3:hover {
+  color: #f4a261;
+}
+
+.footer3 {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer3 p {
+  font-size: 14px;
+}
 
 @media screen and (max-width: 850px) {
-  .toggle-btn {
+  .toggle-btn3 {
     display: block;
-    position: absolute;
-    right: 30px;
-    top: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: whitesmoke;
   }
 
   .menu {
@@ -29,89 +271,4 @@ body.contactus-body {
     width: 200px;
     text-align: center;
   }
-
-  .menu.active {
-    display: flex;
-  }
-
-  li {
-    padding: 12px 0;
-  }
-}
-
-.contact-section {
-    display: flex;
-    justify-content: space-between;
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-}
-
-.form-container {
-    width: 50%;
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.form-container h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.form-container .Name, .Email , .form-container textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.form-container button {
-    width: 100%;
-    padding: 12px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.form-container button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.contact-info {
-    width: 40%;
-}
-
-.contact-info .address, .contact-info .social {
-    margin-bottom: 30px;
-}
-
-.contact-info h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.contact-info p {
-    font-size: 16px;
-    color: #555;
-}
-
-.social-icon {
-    font-size: 30px;
-    color: #333;
-    margin: 10px;
-    transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-    color: #333;
-    
 }

@@ -112,55 +112,39 @@ body.services-body {
   width: 100%;
   justify-content: space-between;
   padding: 20px;
-  z-index: 1000;
+  color: whitesmoke;
+  z-index: 10;
 }
 
-.nav .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
+ul {
+  list-style-type: none;
 }
 
 .menu {
   display: flex;
   align-items: center;
-  list-style-type: none;
 }
 
-.menu li {
-  margin: 0 15px;
+li {
+  margin: 0 23px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .menu a {
   color: #f7f3f3;
-  text-decoration: none;
-  position: relative;
-  transition: color 0.3s ease;
 }
 
-.menu a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #f7f3f3;
-  transition: width 0.3s ease;
-}
-
-.menu a:hover::after {
-  width: 100%;
-}
-
-/* زر التبديل للجوال */
 .toggle-btn {
+  position: absolute;
   display: none;
   cursor: pointer;
-  font-size: 24px;
-  color: white;
-  background: none;
-  border: none;
 }
 
 /* محتوى المقدمة */
@@ -296,7 +280,7 @@ body.services-body {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   position: relative;
   bottom: 0;
   width: 100%;

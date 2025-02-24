@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../Homepage/Homepage.css';
 
 export function Home() {
-  // إضافة وإزالة className لـ body
+  const [menuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
   useEffect(() => {
     document.body.classList.add('home-body'); // إضافة className عند تحميل الصفحة
     return () => {
@@ -10,107 +16,37 @@ export function Home() {
     };
   }, []);
 
-  const switchLanguage = (lang) => {
-    document.documentElement.setAttribute("lang", lang);
-    const langTexts = document.querySelectorAll('.lang-text');
-    langTexts.forEach((element) => {
-      const key = element.getAttribute('data-lang');
-      element.textContent = translations[lang][key] || element.textContent;
-    });
-  };
-
-  const translations = {
-    en: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      destinations: "Destinations",
-      reviews: "Reviews",
-      gallery: "Gallery",
-      contact: "Contact Us",
-      booking: "Booking",
-      login: "Login",
-      explore: "Discover the most beautiful destinations in Jordan with our unique travel services! We help you design your perfect trip with ease",
-      explore_now: "Explore Destinations Now",
-      request_services: "Request Our Services",
-      footer: "© 2025 DiscoverJordan | All rights reserved."
-    },
-    ar: {
-      home: "الرئيسية",
-      about: "من نحن",
-      services: "الخدمات",
-      destinations: "الوجهات",
-      reviews: "التقييمات",
-      gallery: "المعرض",
-      contact: "اتصل بنا",
-      booking: "الحجز",
-      login: "تسجيل الدخول",
-      explore: "اكتشف أجمل الوجهات في الأردن مع خدماتنا السياحية الفريدة! نساعدك في تصميم رحلتك المثالية بكل سهولة.",
-      explore_now: "استكشف الوجهات الآن",
-      request_services: "طلب خدماتنا",
-      footer: "© 2025 DiscoverJordan | جميع الحقوق محفوظة."
-    }
-  };
-
-  // إضافة الأحداث باستخدام useEffect
-  useEffect(() => {
-    const toggleBtn = document.querySelector(".toggle-btn");
-    const menu = document.querySelector(".menu");
-
-    if (toggleBtn && menu) {
-      toggleBtn.addEventListener("click", () => {
-        menu.classList.toggle("active");
-      });
-    }
-
-    const introText = document.querySelector(".intro-content h1");
-    if (introText) {
-      introText.classList.add("fade-in");
-    }
-
-    // تنظيف الأحداث عند إلغاء التثبيت
-    return () => {
-      if (toggleBtn && menu) {
-        toggleBtn.removeEventListener("click", () => {
-          menu.classList.toggle("active");
-        });
-      }
-    };
-  }, []);
-
   return (
     <div>
       <nav className="nav6">
         <h1 className="logo">DiscoverJordan</h1>
-        <button className="toggle-btn6">&#9776;</button>
-        <ul className="menu">
-          <li><a href="/Homepage"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></a></li>
-          <li><a href="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></a></li>
-          <li><a href="/services"><i className="fas fa-cogs"></i> <span className="lang-text" data-lang="services">Services</span></a></li>
-          <li><a href="/destinations"><i className="fas fa-map-marker-alt"></i> <span className="lang-text" data-lang="destinations">Destinations</span></a></li>
-          <li><a href="/reviews"><i className="fas fa-star"></i> <span className="lang-text" data-lang="reviews">Reviews</span></a></li>
-          <li><a href="/gallery"><i className="fas fa-images"></i> <span className="lang-text" data-lang="gallery">Gallery</span></a></li>
-          <li><a href="/contactus"><i className="fas fa-envelope"></i> <span className="lang-text" data-lang="contact">Contact Us</span></a></li>
-          <li><a href="/booking"><i className="fas fa-calendar-check"></i> <span className="lang-text" data-lang="booking">Booking</span></a></li>
-          <li><a href="/login"><i className="fas fa-sign-in-alt"></i> <span className="lang-text" data-lang="login">Login</span></a></li>
+        <button className="toggle-btn" onClick={toggleMenu}>
+          &#9776;
+        </button>
+        <ul className={`menu ${menuActive ? 'active' : ''}`}>
+          <li><Link to="/Homepage"><i className="fas fa-home"></i> Home</Link></li>
+          <li><Link to="/aboutus"><i className="fas fa-info-circle"></i> About Us</Link></li>
+          <li><Link to="/services"><i className="fas fa-cogs"></i> Services</Link></li>
+          <li><Link to="/destinations"><i className="fas fa-map-marker-alt"></i> Destinations</Link></li>
+          <li><Link to="/reviews"><i className="fas fa-star"></i> Reviews</Link></li>
+          <li><Link to="/gallery"><i className="fas fa-images"></i> Gallery</Link></li>
+          <li><Link to="/contactus"><i className="fas fa-envelope"></i> Contact Us</Link></li>
+          <li><Link to="/booking"><i className="fas fa-calendar-check"></i> Booking</Link></li>
+          <li><Link to="/login"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
         </ul>
-        <div className="language-switcher">
-          <button onClick={() => switchLanguage('en')}>EN</button>
-          <button onClick={() => switchLanguage('ar')}>AR</button>
-        </div>
       </nav>
-      <header className='headers'>
+
+      <header className="headers">
         <div className="intro-content">
-          <h1 className="lang-text" data-lang="explore">Discover the most beautiful destinations in Jordan with our unique travel services! We help you design your perfect trip with ease</h1>
+          <h1>Discover the most beautiful destinations in Jordan with our unique travel services!</h1>
+          <p>We help you design your perfect trip with ease.</p>
           <div className="cta-buttons">
-            <a href="/destinations" className="cta-btn lang-text" data-lang="explore_now">Explore Destinations Now</a>
-            <a href="/services" className="cta-btn lang-text" data-lang="request_services">Request Our Services</a>
+            <Link to="/destinations" className="cta-btn">Explore Destinations Now</Link>
+            <Link to="/services" className="cta-btn">Request Our Services</Link>
           </div>
         </div>
       </header>
-      <footer className="footer6">
-        <p data-lang="footer" className="lang-text1">© 2025 DiscoverJordan | All rights reserved.</p>
-      </footer>
-    </div>
+
+      </div>
   );
 }

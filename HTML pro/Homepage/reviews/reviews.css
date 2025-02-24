@@ -1,72 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap");
 
-html[lang="ar"] {
-  direction: rtl;
-  text-align: right;
-  font-family: "Tajawal", sans-serif;
-}
-
-html[lang="en"] {
-  direction: ltr;
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-}
-
-* {
+body {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
-
-.language-switcher {
-  position: relative;
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 100px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.dropdown a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-}
-
-.dropdown a:hover {
-  background-color: #ddd;
-}
-
-.language-switcher:hover .dropdown {
-  display: block;
-}
-
-.language-switcher button {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.language-switcher button:hover {
-  color: #f4a261;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .header1 {
@@ -100,7 +41,7 @@ html[lang="en"] {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 20px;
+  padding: 6px;
   color: whitesmoke;
   z-index: 10;
 }
@@ -115,7 +56,7 @@ ul {
 }
 
 li {
-  margin: 0 15px;
+  margin: 0 23px;
 }
 
 a {
@@ -196,7 +137,6 @@ a:hover {
   animation: fadeIn 2s ease-in-out 1s forwards;
 }
 
-/* تأثيرات التحريك */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -205,6 +145,7 @@ a:hover {
     opacity: 1;
   }
 }
+
 .reviews-container {
   display: flex;
   justify-content: space-around;
@@ -222,6 +163,32 @@ a:hover {
   max-width: 300px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+.review-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.review-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.review-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .review-card:hover {
@@ -265,7 +232,7 @@ a:hover {
 
 .add-review input[type="text"],
 .add-review textarea {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -298,11 +265,16 @@ a:hover {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
+.add-review button[type="submit"]:hover {
+  background-color: #e76f51;
+  transform: translateY(-2px);
+}
+
 .footer {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -311,3 +283,4 @@ a:hover {
 .footer p {
   font-size: 14px;
 }
+

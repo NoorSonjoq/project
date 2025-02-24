@@ -1,117 +1,78 @@
-import React, { useEffect } from 'react';
-import '../destinations/destinations.css'
+import React, { useState, useEffect } from 'react';
+import '../destinations/destinations.css';
 
 export function Destinations() {
-  const switchLanguage = (lang) => {
-    document.documentElement.setAttribute("lang", lang);
-    const langTexts = document.querySelectorAll('.lang-text');
-    langTexts.forEach((element) => {
-      const key = element.getAttribute('data-lang');
-      element.textContent = translations[lang][key] || element.textContent;
-    });
+  const [menuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive); 
   };
-  // إضافة وإزالة className لـ body
+  
   useEffect(() => {
-    document.body.classList.add('booking-body'); // إضافة className عند تحميل الصفحة
+    document.body.classList.add('destinations-body');
     return () => {
-      document.body.classList.remove('booking-body'); // إزالته عند مغادرة الصفحة
+      document.body.classList.remove('destinations-body');
     };
   }, []);
 
-  const translations = {
-    en: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      destinations: "Destinations",
-      reviews: "Reviews",
-      gallery: "Gallery",
-      contact: "Contact Us",
-      booking: "Booking",
-      login: "Login",
-      explore1: "Explore the Most Beautiful Destinations in Jordan",
-      discover: "Discover breathtaking places and plan your next adventure!",
-      topDestinations: "Top Destinations",
-      petraDescription: "The ancient city of Petra, one of the Seven Wonders of the World.",
-      wadiRumDescription: "Experience the stunning desert landscape and adventure activities.",
-      deadSeaDescription: "Float effortlessly in the world's saltiest body of water.",
-      footer: "© 2025 DiscoverJordan | All rights reserved."
-    },
-    ar: {
-      home: "الرئيسية",
-      about: "من نحن",
-      services: "الخدمات",
-      destinations: "الوجهات",
-      reviews: "التقييمات",
-      gallery: "المعرض",
-      contact: "اتصل بنا",
-      booking: "الحجز",
-      login: "تسجيل الدخول",
-      explore1: "اكتشف أجمل الوجهات في الأردن",
-      discover: "اكتشف الأماكن الرائعة وخطط لمغامرتك القادمة!",
-      topDestinations: "أفضل الوجهات",
-      petraDescription: "مدينة البتراء القديمة، إحدى عجائب الدنيا السبع.",
-      wadiRumDescription: "استمتع بالمناظر الصحراوية المذهلة وأنشطة المغامرة.",
-      deadSeaDescription: "طفوا بسهولة في أكثر المسطحات المائية ملوحة في العالم.",
-      footer: "© 2025 DiscoverJordan | جميع الحقوق محفوظة."
-    }
-  };
-
-  return (
+   return (
     <>
-      <nav className="nav4">
+      <nav className="nav">
         <h1 className="logo">DiscoverJordan</h1>
-        <button className="toggle-btn4">&#9776;</button>
-        <ul className="menu">
-        <li><a href="/Homepage"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></a></li>
-          <li><a href="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></a></li>
-          <li><a href="/services"><i className="fas fa-cogs"></i> <span className="lang-text" data-lang="services">Services</span></a></li>
-          <li><a href="/destinations"><i className="fas fa-map-marker-alt"></i> <span className="lang-text" data-lang="destinations">Destinations</span></a></li>
-          <li><a href="/reviews"><i className="fas fa-star"></i> <span className="lang-text" data-lang="reviews">Reviews</span></a></li>
-          <li><a href="/gallery"><i className="fas fa-images"></i> <span className="lang-text" data-lang="gallery">Gallery</span></a></li>
-          <li><a href="/contactus"><i className="fas fa-envelope"></i> <span className="lang-text" data-lang="contact">Contact Us</span></a></li>
-          <li><a href="/booking"><i className="fas fa-calendar-check"></i> <span className="lang-text" data-lang="booking">Booking</span></a></li>
-          <li><a href="/login"><i className="fas fa-sign-in-alt"></i> <span className="lang-text" data-lang="login">Login</span></a></li>
+        <button
+          className="toggle-btn"
+          onClick={toggleMenu}>
+          &#9776;
+        </button>
+        <ul className={`menu ${menuActive ? 'active' : ''}`}>
+          <li><a href="/Homepage"><i className="fas fa-home"></i> Home</a></li>
+          <li><a href="/aboutus"><i className="fas fa-info-circle"></i> About Us</a></li>
+          <li><a href="/services"><i className="fas fa-cogs"></i> Services</a></li>
+          <li><a href="/destinations"><i className="fas fa-map-marker-alt"></i> Destinations</a></li>
+          <li><a href="/reviews"><i className="fas fa-star"></i> Reviews</a></li>
+          <li><a href="/gallery"><i className="fas fa-images"></i> Gallery</a></li>
+          <li><a href="/contactus"><i className="fas fa-envelope"></i> Contact Us</a></li>
+          <li><a href="/booking"><i className="fas fa-calendar-check"></i> Booking</a></li>
+          <li><a href="/login"><i className="fas fa-sign-in-alt"></i> Login</a></li>
         </ul>
-        <div className="language-switcher">
-          <button onClick={() => switchLanguage('en')}>EN</button>
-          <button onClick={() => switchLanguage('ar')}>AR</button>
-        </div>
       </nav>
+
       <header className="header1">
         <div className="intro-content">
-          <h1><span className="lang-text" data-lang="explore1">Explore the Most Beautiful Destinations in Jordan</span></h1>
-          <p><span className="lang-text" data-lang="discover">Discover breathtaking places and plan your next adventure!</span></p>
+          <h1>Explore the Most Beautiful Destinations in Jordan</h1>
+          <p>Discover breathtaking places and plan your next adventure!</p>
         </div>
       </header>
+
       <section className="destinations">
-        <h2><span className="lang-text" data-lang="topDestinations">Top Destinations</span></h2>
+        <h2>Top Destinations</h2>
         <div className="destinations-container">
           <div className="destination-card">
             <img src="../img/petra.jpg" alt="Petra" />
             <a href="https://www.google.com/maps?q=Petra,+Jordan">
               <h3>Petra</h3>
-              <p><span className="lang-text" data-lang="petraDescription">The ancient city of Petra, one of the Seven Wonders of the World.</span></p>
+              <p>The ancient city of Petra, one of the Seven Wonders of the World.</p>
             </a>
           </div>
           <div className="destination-card">
             <img src="../img/Wadi Rum.jpg" alt="Wadi Rum" />
             <a href="https://maps.app.goo.gl/p6CEdyTdbZtNaeqE6">
               <h3>Wadi Rum</h3>
-              <p><span className="lang-text" data-lang="wadiRumDescription">Experience the stunning desert landscape and adventure activities.</span></p>
+              <p>Experience the stunning desert landscape and adventure activities.</p>
             </a>
           </div>
           <div className="destination-card">
             <img src="../img/Dead Sea.jpg" alt="Dead Sea" />
             <a href="https://maps.app.goo.gl/NWBMat5D1ATuhCqaA">
               <h3>Dead Sea</h3>
-              <p><span className="lang-text" data-lang="deadSeaDescription">Float effortlessly in the world's saltiest body of water.</span></p>
+              <p>Float effortlessly in the world's saltiest body of water.</p>
             </a>
           </div>
         </div>
       </section>
+
       <footer className="footer4">
-        <p data-lang="footer" className="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+        <p>© 2025 DiscoverJordan | All rights reserved.</p>
       </footer>
     </>
   );

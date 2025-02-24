@@ -51,7 +51,7 @@ export function ForgetPassword() {
       </div>
 
       <footer className="footer1">
-        <p data-lang="footer" class="lang-text">
+        <p >
           © 2025 DiscoverJordan | All rights reserved.
         </p>
       </footer>

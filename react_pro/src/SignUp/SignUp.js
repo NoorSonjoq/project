@@ -169,7 +169,7 @@ export function SignUp() {
       </div>
     </div>
     <footer className="footer1">
-        <p data-lang="footer" className="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+        <p >© 2025 DiscoverJordan | All rights reserved.</p>
     </footer>
     </>
   );

@@ -1,8 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect ,useState } from 'react';
 import '../gallary/gallary.css'
 
 export function Gallery() {
 
+const [menuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
     useEffect(() => {
       document.body.classList.add('gallary-body'); // إضافة className عند تحميل الصفحة
       return () => {
@@ -10,54 +15,15 @@ export function Gallery() {
       };
     }, []);
 
-  const switchLanguage = (lang) => {
-    document.documentElement.setAttribute("lang", lang);
-    const langTexts = document.querySelectorAll('[data-lang]');
-    langTexts.forEach((element) => {
-      const key = element.getAttribute('data-lang');
-      element.textContent = translations[lang][key] || element.textContent;
-    });
-  };
 
-  const translations = {
-    en: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      destinations: "Destinations",
-      reviews: "Reviews",
-      gallery: "Gallery",
-      contact: "Contact Us",
-      booking: "Booking",
-      login: "Login",
-      explore: "Discover the most beautiful destinations in Jordan with our unique travel services! We help you design your perfect trip with ease",
-      explore_now: "Explore Destinations Now",
-      request_services: "Request Our Services",
-      footer: "© 2025 DiscoverJordan | All rights reserved."
-    },
-    ar: {
-      home: "الرئيسية",
-      about: "من نحن",
-      services: "الخدمات",
-      destinations: "الوجهات",
-      reviews: "التقييمات",
-      gallery: "المعرض",
-      contact: "اتصل بنا",
-      booking: "الحجز",
-      login: "تسجيل الدخول",
-      explore: "اكتشف أجمل الوجهات في الأردن مع خدماتنا السياحية الفريدة! نساعدك في تصميم رحلتك المثالية بكل سهولة.",
-      explore_now: "استكشف الوجهات الآن",
-      request_services: "طلب خدماتنا",
-      footer: "© 2025 DiscoverJordan | جميع الحقوق محفوظة."
-    }
-  };
-
-  return (
+ return (
     <>
       <nav className="nav5">
         <h1 className="logo">DiscoverJordan</h1>
-        <button className="toggle-btn5">&#9776;</button>
-        <ul className="menu">
+        <button className="toggle-btn5" onClick={toggleMenu}>
+          &#9776;
+        </button>        
+        <ul className={`menu ${menuActive ? 'active' : ''}`}>
         <li><a href="/Homepage"><i className="fas fa-home"></i> <span className="lang-text" data-lang="home">Home</span></a></li>
           <li><a href="/aboutus"><i className="fas fa-info-circle"></i> <span className="lang-text" data-lang="about">About Us</span></a></li>
           <li><a href="/services"><i className="fas fa-cogs"></i> <span className="lang-text" data-lang="services">Services</span></a></li>
@@ -68,23 +34,19 @@ export function Gallery() {
           <li><a href="/booking"><i className="fas fa-calendar-check"></i> <span className="lang-text" data-lang="booking">Booking</span></a></li>
           <li><a href="/login"><i className="fas fa-sign-in-alt"></i> <span className="lang-text" data-lang="login">Login</span></a></li>
         </ul>
-        <div className="language-switcher">
-          <button onClick={() => switchLanguage('en')}>EN</button>
-          <button onClick={() => switchLanguage('ar')}>AR</button>
-        </div>
-      </nav>
+        </nav>
 
       <section id="gallery" className="gallery">
-        <div className="container" data-aos="fade-up">
+        <div >
           <div className="section-title">
           </div>
-          <div className="row g-0">
-            <div className="gallery">
+          <div className="gallery">
+            <div className="gallery-container">
               <a href="../img/img2.jpg" data-lightbox="my-gallery" data-index="1">
                 <img src="../img/img2.jpg" alt="Image 2" />
               </a>
-              <a href="../img/img3.jpg" data-lightbox="my-gallery" data-index="2">
-                <img src="../img/img3.jpg" alt="Image 3" />
+              <a href="../img/img.jpg" data-lightbox="my-gallery" data-index="2">
+                <img src="../img/img.jpg" alt="Image 3" />
               </a>
               <a href="../img/img4.jpg" data-lightbox="my-gallery" data-index="3">
                 <img src="../img/img4.jpg" alt="Image 4" />
@@ -97,6 +59,12 @@ export function Gallery() {
               </a>
               <a href="../img/Wadi Rum.jpg" data-lightbox="my-gallery" data-index="6">
                 <img src="../img/Wadi Rum.jpg" alt="Wadi Rum" />
+              </a>
+              <a href="../img/Dead Sea.jpg" data-lightbox="my-gallery" data-index="4">
+                <img src="../img/Dead Sea.jpg" alt="Dead Sea" />
+              </a>
+              <a href="../img/img.jpg" data-lightbox="my-gallery" data-index="2">
+                <img src="../img/img.jpg" alt="Image 3" />
               </a>
             </div>
           </div>

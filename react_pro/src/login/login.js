@@ -155,7 +155,7 @@ export function Login() {
 
       {/* الفوتر */}
       <footer className="footer2">
-        <p data-lang="footer" className="lang-text">© 2025 DiscoverJordan | All rights reserved.</p>
+        <p>© 2025 DiscoverJordan | All rights reserved.</p>
       </footer>
     </>
   );
